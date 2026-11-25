@@ -9,7 +9,7 @@ interface SectionWrapperProps {
 
 export default function SectionWrapper({ children, id, className = '' }: SectionWrapperProps) {
   return (
-    <section id={id} className={`py-20 sm:py-28 relative ${className}`}>
+    <section id={id} className={`py-16 sm:py-28 relative overflow-x-clip ${className}`}>
       {/* Section divider glow line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-2xl h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
 

@@ -53,10 +53,10 @@ export default function EducationCerts() {
                     {edu.period}
                   </span>
                 </div>
-                <p className="text-sm sm:text-base text-slate-300 ml-11 sm:ml-11">
+                <p className="text-sm sm:text-base text-slate-300 sm:ml-11">
                   {edu.degree}
                 </p>
-                <div className="mt-3 ml-11 sm:ml-11 inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500/10 to-sky-500/5 border border-cyan-400/20 text-cyan-300">
+                <div className="mt-3 sm:ml-11 inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500/10 to-sky-500/5 border border-cyan-400/20 text-cyan-300">
                   <Trophy className="w-3 h-3" />
                   {edu.score}
                 </div>

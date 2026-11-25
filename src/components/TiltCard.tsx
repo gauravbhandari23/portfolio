@@ -13,7 +13,7 @@ export default function TiltCard({ children, className = '', glowColor = 'rgba(5
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
 
   const handleMove = (e: MouseEvent) => {
-    if (!ref.current) return;
+    if (!ref.current || window.matchMedia('(hover: none)').matches) return;
     const rect = ref.current.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width;
     const y = (e.clientY - rect.top) / rect.height;

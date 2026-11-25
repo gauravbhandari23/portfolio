@@ -18,7 +18,7 @@ export default function App() {
   });
 
   return (
-    <div className="relative min-h-screen bg-[#050816] text-slate-100 bg-grid-pattern">
+    <div className="relative min-h-screen bg-[#050816] text-slate-100 bg-grid-pattern overflow-x-clip">
       {/* Animated Star Canvas */}
       <StarField />
 

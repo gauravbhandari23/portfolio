@@ -33,10 +33,10 @@ export default function Experience() {
           whileInView={{ height: '100%' }}
           viewport={{ once: true }}
           transition={{ duration: 1.5, ease: 'easeOut' }}
-          className="absolute left-4 sm:left-6 top-2 w-px bg-gradient-to-b from-cyan-400/60 via-violet-500/40 to-transparent"
+          className="absolute left-3 sm:left-6 top-2 w-px bg-gradient-to-b from-cyan-400/60 via-violet-500/40 to-transparent"
         />
 
-        <div className="space-y-10">
+        <div className="space-y-8 sm:space-y-10">
           {RESUME_DATA.experiences.map((exp, idx) => (
             <motion.div
               key={exp.company}
@@ -45,10 +45,10 @@ export default function Experience() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={cardVariants}
-              className="relative pl-12 sm:pl-16"
+              className="relative pl-9 sm:pl-16"
             >
               {/* Timeline Dot with pulse ring */}
-              <span className="absolute left-[9px] sm:left-[17px] top-6 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-[#050816] ring-4 ring-cyan-400/20 border-2 border-cyan-400">
+              <span className="absolute left-[5px] sm:left-[17px] top-6 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-[#050816] ring-4 ring-cyan-400/20 border-2 border-cyan-400">
                 <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
                 <span className="absolute h-6 w-6 rounded-full border border-cyan-400/30 animate-pulse-ring" />
               </span>

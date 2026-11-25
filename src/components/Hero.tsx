@@ -118,7 +118,7 @@ export default function Hero() {
             variants={container}
             initial="hidden"
             animate="show"
-            className="lg:col-span-7 space-y-6"
+            className="lg:col-span-7 min-w-0 space-y-5 sm:space-y-6"
           >
             {/* Status Pill */}
             <motion.div variants={item}>
@@ -137,18 +137,18 @@ export default function Hero() {
                 <Zap className="w-4 h-4 text-amber-400" />
                 Hi there, I&apos;m
               </p>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05]">
                 <span className="text-white">Gaurav </span>
                 <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400 bg-clip-text text-transparent text-shimmer">
                   Bhandari
                 </span>
               </h1>
-              <h2 className="text-lg sm:text-2xl lg:text-3xl font-semibold text-slate-300 flex items-center gap-2.5 flex-wrap">
+              <h2 className="text-base sm:text-2xl lg:text-3xl font-semibold text-slate-300 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-2.5 sm:flex-wrap">
                 <span>Building modern</span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-lg bg-white/5 border border-white/10 text-cyan-300">
-                  <Code2 className="w-5 h-5" />
-                  {typed}
-                  <span className="animate-blink text-cyan-400 font-light">|</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 sm:py-0.5 rounded-lg bg-white/5 border border-white/10 text-cyan-300 w-fit max-w-full">
+                  <Code2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                  <span className="truncate">{typed}</span>
+                  <span className="animate-blink text-cyan-400 font-light shrink-0">|</span>
                 </span>
               </h2>
             </motion.div>
@@ -164,10 +164,10 @@ export default function Hero() {
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div variants={item} className="flex flex-wrap items-center gap-3.5 pt-2">
+            <motion.div variants={item} className="flex flex-wrap items-center gap-3 pt-2">
               <a
                 href="#projects"
-                className="group relative inline-flex items-center gap-2 px-7 py-4 rounded-2xl font-semibold text-sm sm:text-base bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/50 transition-all hover:scale-[1.03] active:scale-[0.97] overflow-hidden"
+                className="group relative inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-7 sm:py-4 rounded-2xl font-semibold text-sm sm:text-base bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/50 transition-all hover:scale-[1.03] active:scale-[0.97] overflow-hidden"
               >
                 {/* Shine sweep */}
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
@@ -180,7 +180,7 @@ export default function Hero() {
               <a
                 href={RESUME_DATA.resumePdf}
                 download="Gaurav_Bhandari_Resume.pdf"
-                className="inline-flex items-center gap-2 px-6 py-4 rounded-2xl font-semibold text-sm sm:text-base bg-white/5 hover:bg-white/10 border border-white/10 text-slate-100 transition-all hover:border-cyan-400/40 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-6 sm:py-4 rounded-2xl font-semibold text-sm sm:text-base bg-white/5 hover:bg-white/10 border border-white/10 text-slate-100 transition-all hover:border-cyan-400/40 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <Download className="w-4 h-4 text-cyan-400" />
                 Download CV
@@ -233,10 +233,10 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.88, y: 32 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5"
+            className="lg:col-span-5 min-w-0"
           >
             <div className="animate-float">
-              <div className="group relative rounded-2xl bg-slate-900/80 backdrop-blur-xl border border-white/10 p-5 sm:p-6 shadow-[0_20px_80px_rgba(0,0,0,0.65)] animated-border glow-hover">
+              <div className="group relative rounded-2xl bg-slate-900/80 backdrop-blur-xl border border-white/10 p-4 sm:p-6 shadow-[0_20px_80px_rgba(0,0,0,0.65)] animated-border glow-hover overflow-hidden">
                 {/* Gradient border glow */}
                 <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-cyan-500/25 via-transparent to-violet-500/25 pointer-events-none" />
 
@@ -254,13 +254,13 @@ export default function Hero() {
                 </div>
 
                 {/* Code Content with line numbers */}
-                <div className="flex relative z-10">
-                  <div className="hidden sm:flex flex-col text-right pr-4 text-xs font-mono text-slate-600 select-none leading-relaxed">
+                <div className="flex relative z-10 overflow-hidden">
+                  <div className="hidden sm:flex flex-col text-right pr-4 text-xs font-mono text-slate-600 select-none leading-relaxed shrink-0">
                     {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                       <span key={n}>{n}</span>
                     ))}
                   </div>
-                  <pre className="font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto flex-1">
+                  <pre className="font-mono text-[11px] sm:text-sm leading-relaxed overflow-x-auto flex-1 min-w-0">
                     <code>
                       <span className="text-violet-400">const</span>{' '}
                       <span className="text-cyan-300">developer</span>{' '}
@@ -294,7 +294,7 @@ export default function Hero() {
                 </div>
 
                 {/* Bottom Status */}
-                <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 relative z-10">
+                <div className="mt-5 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400 relative z-10">
                   <span className="inline-flex items-center gap-1.5 text-cyan-300">
                     <Sparkles className="w-3.5 h-3.5" />
                     Clean Hooks &amp; State Architecture

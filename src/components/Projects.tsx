@@ -41,7 +41,7 @@ export default function Projects() {
                 >
                   {/* ── Top Banner ── */}
                   <div
-                    className={`relative h-48 sm:h-52 p-6 flex flex-col justify-between overflow-hidden ${
+                    className={`relative min-h-[11.5rem] sm:h-52 p-5 sm:p-6 flex flex-col justify-between gap-4 overflow-hidden ${
                       isCyan
                         ? 'bg-gradient-to-br from-cyan-500/20 via-sky-500/10 to-slate-900'
                         : 'bg-gradient-to-br from-violet-500/20 via-fuchsia-500/10 to-slate-900'
