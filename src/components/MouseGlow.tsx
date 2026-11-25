@@ -1,13 +1,20 @@
 import { useEffect, useState } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 export default function MouseGlow() {
   const [pos, setPos] = useState({ x: -200, y: -200 });
+  const { theme } = useTheme();
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
     window.addEventListener('mousemove', onMove, { passive: true });
     return () => window.removeEventListener('mousemove', onMove);
   }, []);
+
+  const gradient =
+    theme === 'dark'
+      ? 'radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(139, 92, 246, 0.04) 40%, transparent 70%)'
+      : 'radial-gradient(circle, rgba(14, 165, 233, 0.11) 0%, rgba(139, 92, 246, 0.06) 40%, transparent 70%)';
 
   return (
     <div
@@ -17,8 +24,7 @@ export default function MouseGlow() {
         top: pos.y - 240,
         width: 480,
         height: 480,
-        background:
-          'radial-gradient(circle, rgba(56, 189, 248, 0.07) 0%, rgba(139, 92, 246, 0.04) 40%, transparent 70%)',
+        background: gradient,
         borderRadius: '50%',
         filter: 'blur(2px)',
       }}
@@ -26,4 +32,3 @@ export default function MouseGlow() {
     />
   );
 }
-

@@ -33,7 +33,7 @@ export default function Experience() {
           whileInView={{ height: '100%' }}
           viewport={{ once: true }}
           transition={{ duration: 1.5, ease: 'easeOut' }}
-          className="absolute left-3 sm:left-6 top-2 w-px bg-gradient-to-b from-cyan-400/60 via-violet-500/40 to-transparent"
+          className="absolute left-3 sm:left-6 top-2 w-px bg-gradient-to-b from-sky-500/60 dark:from-cyan-400/60 via-violet-500/40 to-transparent"
         />
 
         <div className="space-y-8 sm:space-y-10">
@@ -48,21 +48,21 @@ export default function Experience() {
               className="relative pl-9 sm:pl-16"
             >
               {/* Timeline Dot with pulse ring */}
-              <span className="absolute left-[5px] sm:left-[17px] top-6 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-[#050816] ring-4 ring-cyan-400/20 border-2 border-cyan-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                <span className="absolute h-6 w-6 rounded-full border border-cyan-400/30 animate-pulse-ring" />
+              <span className="absolute left-[5px] sm:left-[17px] top-6 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-slate-50 dark:bg-[#050816] ring-4 ring-sky-500/20 dark:ring-cyan-400/20 border-2 border-sky-500 dark:border-cyan-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-sky-500 dark:bg-cyan-400" />
+                <span className="absolute h-6 w-6 rounded-full border border-sky-500/30 dark:border-cyan-400/30 animate-pulse-ring" />
               </span>
 
               {/* Card */}
-              <div className="group rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-white/10 hover:border-cyan-400/35 p-5 sm:p-7 transition-all duration-500 shadow-lg glow-hover animated-border">
+              <div className="group rounded-2xl bg-white/85 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-white/10 hover:border-sky-400/50 dark:hover:border-cyan-400/35 p-5 sm:p-7 transition-all duration-500 shadow-[0_8px_30px_rgba(15,23,42,0.05)] dark:shadow-lg glow-hover animated-border">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-300">
+                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-cyan-300 transition-colors duration-300">
                       {exp.company}
                     </h3>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono text-slate-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full w-fit">
-                    <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+                  <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1 rounded-full w-fit">
+                    <Calendar className="w-3.5 h-3.5 text-sky-600 dark:text-cyan-400" />
                     {exp.overallPeriod}
                   </span>
                 </div>
@@ -72,11 +72,11 @@ export default function Experience() {
                   {exp.roles.map((role) => (
                     <div
                       key={role.title}
-                      className="relative pl-4 border-l-2 border-white/10 hover:border-cyan-400/40 transition-colors space-y-3"
+                      className="relative pl-4 border-l-2 border-slate-200 dark:border-white/10 hover:border-sky-400/50 dark:hover:border-cyan-400/40 transition-colors space-y-3"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <div className="flex items-center gap-2.5 flex-wrap">
-                          <h4 className="text-base sm:text-lg font-semibold text-slate-100">
+                          <h4 className="text-base sm:text-lg font-semibold text-slate-800 dark:text-slate-100">
                             {role.title}
                           </h4>
                           {role.badge && (
@@ -87,17 +87,19 @@ export default function Experience() {
                               transition={{ type: 'spring', stiffness: 400, damping: 15, delay: 0.3 }}
                               className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${
                                 role.badge === 'Current'
-                                  ? 'bg-emerald-500/10 text-emerald-300 border-emerald-400/30'
+                                  ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30 dark:border-emerald-400/30'
                                   : role.badge === 'Contract'
-                                    ? 'bg-violet-500/10 text-violet-300 border-violet-400/30'
-                                    : 'bg-cyan-500/10 text-cyan-300 border-cyan-400/30'
+                                    ? 'bg-violet-500/10 text-violet-700 dark:text-violet-300 border-violet-500/30 dark:border-violet-400/30'
+                                    : 'bg-sky-500/10 dark:bg-cyan-500/10 text-sky-700 dark:text-cyan-300 border-sky-500/30 dark:border-cyan-400/30'
                               }`}
                             >
                               {role.badge}
                             </motion.span>
                           )}
                         </div>
-                        <span className="text-xs font-mono text-slate-400">{role.period}</span>
+                        <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
+                          {role.period}
+                        </span>
                       </div>
 
                       <ul className="space-y-2.5">
@@ -108,9 +110,9 @@ export default function Experience() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: 0.1 * bIdx }}
-                            className="flex items-start gap-2.5 text-sm text-slate-300/90 leading-relaxed"
+                            className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-300/90 leading-relaxed"
                           >
-                            <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-4 h-4 text-sky-600 dark:text-cyan-400 shrink-0 mt-0.5" />
                             <span>{bullet}</span>
                           </motion.li>
                         ))}
@@ -120,7 +122,7 @@ export default function Experience() {
                 </div>
 
                 {/* Tags with staggered entry */}
-                <div className="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-2">
+                <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/5 flex flex-wrap gap-2">
                   {exp.tags.map((tag, tIdx) => (
                     <motion.span
                       key={tag}
@@ -129,7 +131,7 @@ export default function Experience() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: 0.05 * tIdx }}
                       whileHover={{ scale: 1.08, y: -2 }}
-                      className="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-800/80 text-slate-300 border border-white/5 hover:border-cyan-400/30 hover:text-cyan-200 transition-all cursor-default"
+                      className="text-xs font-medium px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-white/5 hover:border-sky-400/40 dark:hover:border-cyan-400/30 hover:text-sky-700 dark:hover:text-cyan-200 transition-all cursor-default"
                     >
                       {tag}
                     </motion.span>

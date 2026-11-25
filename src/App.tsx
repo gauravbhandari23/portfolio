@@ -18,8 +18,8 @@ export default function App() {
   });
 
   return (
-    <div className="relative min-h-screen bg-[#050816] text-slate-100 bg-grid-pattern overflow-x-clip">
-      {/* Animated Star Canvas */}
+    <div className="relative min-h-screen bg-slate-50 text-slate-900 dark:bg-[#050816] dark:text-slate-100 bg-grid-pattern overflow-x-clip transition-colors duration-300">
+      {/* Animated Star / Particle Canvas */}
       <StarField />
 
       {/* Mouse Cursor Glow (desktop only) */}
@@ -28,7 +28,7 @@ export default function App() {
       {/* Top Scroll Progress Bar */}
       <motion.div
         style={{ scaleX }}
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-cyan-400 via-sky-400 to-violet-500 origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-sky-500 via-cyan-400 to-violet-500 origin-left z-[60]"
       />
 
       <Navbar />

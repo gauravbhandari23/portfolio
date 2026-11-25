@@ -10,10 +10,11 @@ const SKILL_GROUPS = [
   {
     title: 'Languages',
     icon: Code,
-    gradient: 'from-cyan-500 to-sky-400',
-    bgGradient: 'from-cyan-400/15 to-sky-500/5',
-    borderHover: 'hover:border-cyan-400/40',
-    badgeColor: 'text-cyan-300 bg-cyan-500/10 border-cyan-400/20',
+    gradient: 'from-sky-500 to-cyan-400',
+    bgGradient: 'from-sky-400/15 to-cyan-500/5',
+    borderHover: 'hover:border-sky-400/50 dark:hover:border-cyan-400/40',
+    badgeColor:
+      'text-sky-700 bg-sky-500/10 border-sky-500/20 dark:text-cyan-300 dark:bg-cyan-500/10 dark:border-cyan-400/20',
     glowColor: 'rgba(56, 189, 248, 0.15)',
     items: RESUME_DATA.skills.languages,
   },
@@ -22,8 +23,9 @@ const SKILL_GROUPS = [
     icon: Layers,
     gradient: 'from-violet-500 to-fuchsia-400',
     bgGradient: 'from-violet-400/15 to-fuchsia-500/5',
-    borderHover: 'hover:border-violet-400/40',
-    badgeColor: 'text-violet-300 bg-violet-500/10 border-violet-400/20',
+    borderHover: 'hover:border-violet-400/50 dark:hover:border-violet-400/40',
+    badgeColor:
+      'text-violet-700 bg-violet-500/10 border-violet-500/20 dark:text-violet-300 dark:bg-violet-500/10 dark:border-violet-400/20',
     glowColor: 'rgba(139, 92, 246, 0.15)',
     items: RESUME_DATA.skills.frameworks,
   },
@@ -32,14 +34,21 @@ const SKILL_GROUPS = [
     icon: Wrench,
     gradient: 'from-emerald-500 to-teal-400',
     bgGradient: 'from-emerald-400/15 to-teal-500/5',
-    borderHover: 'hover:border-emerald-400/40',
-    badgeColor: 'text-emerald-300 bg-emerald-500/10 border-emerald-400/20',
+    borderHover: 'hover:border-emerald-400/50 dark:hover:border-emerald-400/40',
+    badgeColor:
+      'text-emerald-700 bg-emerald-500/10 border-emerald-500/20 dark:text-emerald-300 dark:bg-emerald-500/10 dark:border-emerald-400/20',
     glowColor: 'rgba(16, 185, 129, 0.15)',
     items: RESUME_DATA.skills.tools,
   },
 ];
 
-function SkillBar({ name, level, badgeColor, gradient, delay }: {
+function SkillBar({
+  name,
+  level,
+  badgeColor,
+  gradient,
+  delay,
+}: {
   name: string;
   level: string;
   badgeColor: string;
@@ -57,16 +66,16 @@ function SkillBar({ name, level, badgeColor, gradient, delay }: {
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay }}
       whileHover={{ scale: 1.03, y: -2 }}
-      className="rounded-xl bg-slate-950/60 border border-white/5 hover:border-white/15 p-3.5 transition-all cursor-default"
+      className="rounded-xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/15 p-3.5 transition-all cursor-default"
     >
       <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-semibold text-slate-100">{name}</span>
+        <span className="text-sm font-semibold text-slate-800 dark:text-slate-100">{name}</span>
         <span className={`text-[11px] font-mono px-2 py-0.5 rounded-md border ${badgeColor}`}>
           {level}
         </span>
       </div>
       {/* Animated bar */}
-      <div className="h-1 rounded-full bg-slate-800 overflow-hidden">
+      <div className="h-1 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
         <div
           className={`h-full rounded-full bg-gradient-to-r ${gradient}`}
           style={{
@@ -104,11 +113,11 @@ export default function Skills() {
             >
               <TiltCard glowColor={group.glowColor} className="h-full">
                 <div
-                  className={`group relative rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-white/10 ${group.borderHover} p-6 transition-all duration-300 overflow-hidden h-full animated-border`}
+                  className={`group relative rounded-2xl bg-white/85 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-white/10 ${group.borderHover} p-6 transition-all duration-300 overflow-hidden h-full shadow-[0_8px_30px_rgba(15,23,42,0.05)] dark:shadow-lg animated-border`}
                 >
                   {/* Top gradient wash */}
                   <div
-                    className={`absolute inset-x-0 top-0 h-28 bg-gradient-to-b ${group.bgGradient} opacity-50 pointer-events-none`}
+                    className={`absolute inset-x-0 top-0 h-28 bg-gradient-to-b ${group.bgGradient} opacity-60 dark:opacity-50 pointer-events-none`}
                   />
 
                   <div className="relative z-10">
@@ -119,7 +128,9 @@ export default function Skills() {
                       >
                         <Icon className="w-5 h-5" />
                       </motion.div>
-                      <h3 className="text-lg font-bold text-white">{group.title}</h3>
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                        {group.title}
+                      </h3>
                     </div>
 
                     <div className="grid grid-cols-1 gap-2.5">

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
@@ -10,8 +11,6 @@
   html,
   body {
     font-family: var(--font-sans);
-    background-color: #050816;
-    color: #f1f5f9;
     overflow-x: clip;
   }
 
@@ -20,8 +19,15 @@
   }
 }
 
-/* ─── Grid Background ─── */
+/* ─── Grid Background (Light & Dark) ─── */
 .bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.dark .bg-grid-pattern {
   background-image:
     linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
@@ -51,10 +57,10 @@
   padding: 1px;
   background: linear-gradient(
     135deg,
-    rgba(56, 189, 248, 0.3),
-    rgba(139, 92, 246, 0.3),
-    rgba(56, 189, 248, 0.1),
-    rgba(139, 92, 246, 0.3)
+    rgba(14, 165, 233, 0.45),
+    rgba(139, 92, 246, 0.45),
+    rgba(14, 165, 233, 0.15),
+    rgba(139, 92, 246, 0.45)
   );
   background-size: 300% 300%;
   animation: border-rotate 6s ease infinite;
@@ -64,6 +70,16 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s ease;
+}
+.dark .animated-border::before {
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.35),
+    rgba(139, 92, 246, 0.35),
+    rgba(56, 189, 248, 0.1),
+    rgba(139, 92, 246, 0.35)
+  );
+  background-size: 300% 300%;
 }
 .animated-border:hover::before {
   opacity: 1;
@@ -76,9 +92,12 @@
 
 /* ─── Glow pulse on hover ─── */
 .glow-hover {
-  transition: box-shadow 0.4s ease;
+  transition: box-shadow 0.4s ease, transform 0.3s ease;
 }
 .glow-hover:hover {
+  box-shadow: 0 20px 45px -12px rgba(14, 165, 233, 0.18), 0 12px 30px -12px rgba(139, 92, 246, 0.14);
+}
+.dark .glow-hover:hover {
   box-shadow: 0 0 40px -8px rgba(56, 189, 248, 0.2), 0 0 80px -16px rgba(139, 92, 246, 0.15);
 }
 
@@ -110,28 +129,23 @@
   animation: blink 1s step-end infinite;
 }
 
-/* ─── Skill bar fill ─── */
-@keyframes fill-bar {
-  0% { width: 0%; }
-}
-.animate-fill-bar {
-  animation: fill-bar 1.2s ease-out forwards;
-}
-
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
   background: #050816;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(56, 189, 248, 0.25);
+  background: rgba(14, 165, 233, 0.35);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.45);
+  background: rgba(14, 165, 233, 0.6);
 }

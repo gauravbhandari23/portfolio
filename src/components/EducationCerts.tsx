@@ -16,11 +16,11 @@ export default function EducationCerts() {
             transition={{ duration: 0.6 }}
             className="space-y-2"
           >
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-cyan-400">
+            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-cyan-400">
               <GraduationCap className="w-4 h-4" />
               Academic Background
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
               Education
             </h2>
           </motion.div>
@@ -34,29 +34,29 @@ export default function EducationCerts() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
                 whileHover={{ y: -4 }}
-                className="group rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-white/10 hover:border-cyan-400/35 p-5 sm:p-6 transition-all duration-300 glow-hover animated-border"
+                className="group rounded-2xl bg-white/85 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-white/10 hover:border-sky-400/50 dark:hover:border-cyan-400/35 p-5 sm:p-6 transition-all duration-300 shadow-[0_8px_30px_rgba(15,23,42,0.05)] dark:shadow-lg glow-hover animated-border"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                   <div className="flex items-center gap-3">
                     <motion.div
                       whileHover={{ rotate: 10 }}
-                      className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 shrink-0"
+                      className="p-2 rounded-lg bg-sky-500/10 dark:bg-cyan-500/10 text-sky-600 dark:text-cyan-400 shrink-0"
                     >
                       <BookOpen className="w-4 h-4" />
                     </motion.div>
-                    <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-cyan-300 transition-colors">
                       {edu.institution}
                     </h3>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full w-fit">
-                    <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+                  <span className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1 rounded-full w-fit">
+                    <Calendar className="w-3.5 h-3.5 text-sky-600 dark:text-cyan-400" />
                     {edu.period}
                   </span>
                 </div>
-                <p className="text-sm sm:text-base text-slate-300 sm:ml-11">
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 sm:ml-11">
                   {edu.degree}
                 </p>
-                <div className="mt-3 sm:ml-11 inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500/10 to-sky-500/5 border border-cyan-400/20 text-cyan-300">
+                <div className="mt-3 sm:ml-11 inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-gradient-to-r from-sky-500/10 to-cyan-500/5 dark:from-cyan-500/10 dark:to-sky-500/5 border border-sky-500/20 dark:border-cyan-400/20 text-sky-700 dark:text-cyan-300">
                   <Trophy className="w-3 h-3" />
                   {edu.score}
                 </div>
@@ -74,11 +74,11 @@ export default function EducationCerts() {
             transition={{ duration: 0.6 }}
             className="space-y-2"
           >
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-violet-400">
+            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-violet-600 dark:text-violet-400">
               <Award className="w-4 h-4" />
               Credentials
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
               Certifications
             </h2>
           </motion.div>
@@ -95,25 +95,25 @@ export default function EducationCerts() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
                 whileHover={{ y: -4, scale: 1.01 }}
-                className="group block rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-white/10 hover:border-violet-400/40 p-5 sm:p-6 transition-all duration-300 glow-hover animated-border"
+                className="group block rounded-2xl bg-white/85 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-white/10 hover:border-violet-400/50 dark:hover:border-violet-400/40 p-5 sm:p-6 transition-all duration-300 shadow-[0_8px_30px_rgba(15,23,42,0.05)] dark:shadow-lg glow-hover animated-border"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-2">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-violet-300 bg-violet-500/10 px-2 py-0.5 rounded-md">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-violet-700 dark:text-violet-300 bg-violet-500/10 px-2 py-0.5 rounded-md">
                       {cert.issuer}
                     </span>
-                    <h3 className="text-base sm:text-lg font-semibold text-white group-hover:text-violet-300 transition-colors leading-snug">
+                    <h3 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-300 transition-colors leading-snug">
                       {cert.title}
                     </h3>
                   </div>
                   <motion.span
                     whileHover={{ rotate: 12, scale: 1.1 }}
-                    className="p-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 group-hover:text-white group-hover:border-violet-400/40 group-hover:bg-violet-500/10 transition-all shrink-0"
+                    className="p-2 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 group-hover:text-violet-700 dark:group-hover:text-white group-hover:border-violet-400/40 group-hover:bg-violet-500/10 transition-all shrink-0"
                   >
                     <ExternalLink className="w-4 h-4" />
                   </motion.span>
                 </div>
-                <p className="mt-3 text-xs text-slate-400 group-hover:text-slate-300 transition-colors">
+                <p className="mt-3 text-xs text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">
                   Click to verify certificate →
                 </p>
               </motion.a>

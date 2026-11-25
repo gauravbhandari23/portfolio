@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 interface Star {
   x: number;
@@ -8,10 +9,14 @@ interface Star {
   speed: number;
   twinkleSpeed: number;
   twinklePhase: number;
+  hue: 'cyan' | 'violet';
 }
 
 export default function StarField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme();
+  const themeRef = useRef(theme);
+  themeRef.current = theme;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -30,42 +35,64 @@ export default function StarField() {
     };
 
     const initStars = () => {
-      const count = Math.floor((canvas.width * canvas.height) / 6000);
+      const count = Math.floor((canvas.width * canvas.height) / 6500);
       stars = Array.from({ length: count }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 1.8 + 0.3,
-        opacity: Math.random() * 0.6 + 0.1,
-        speed: Math.random() * 0.15 + 0.02,
+        size: Math.random() * 1.9 + 0.4,
+        opacity: Math.random() * 0.6 + 0.12,
+        speed: Math.random() * 0.16 + 0.03,
         twinkleSpeed: Math.random() * 0.02 + 0.005,
         twinklePhase: Math.random() * Math.PI * 2,
+        hue: Math.random() > 0.35 ? 'cyan' : 'violet',
       }));
     };
 
     const draw = (time: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isDark = themeRef.current === 'dark';
 
       for (const star of stars) {
         star.y -= star.speed;
-        if (star.y < -2) {
-          star.y = canvas.height + 2;
+        if (star.y < -4) {
+          star.y = canvas.height + 4;
           star.x = Math.random() * canvas.width;
         }
 
         const twinkle = Math.sin(time * star.twinkleSpeed + star.twinklePhase) * 0.5 + 0.5;
         const alpha = star.opacity * (0.4 + twinkle * 0.6);
 
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(148, 210, 255, ${alpha})`;
-        ctx.fill();
-
-        // Subtle glow on larger stars
-        if (star.size > 1.2) {
+        if (isDark) {
           ctx.beginPath();
-          ctx.arc(star.x, star.y, star.size * 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(56, 189, 248, ${alpha * 0.15})`;
+          ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+          ctx.fillStyle =
+            star.hue === 'cyan'
+              ? `rgba(148, 210, 255, ${alpha})`
+              : `rgba(196, 181, 253, ${alpha})`;
           ctx.fill();
+
+          if (star.size > 1.2) {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.size * 2.5, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(56, 189, 248, ${alpha * 0.15})`;
+            ctx.fill();
+          }
+        } else {
+          // Light mode: floating soft sky & violet ambient particles
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.size * 1.35, 0, Math.PI * 2);
+          ctx.fillStyle =
+            star.hue === 'cyan'
+              ? `rgba(14, 165, 233, ${alpha * 0.45})`
+              : `rgba(139, 92, 246, ${alpha * 0.4})`;
+          ctx.fill();
+
+          if (star.size > 1.3) {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.size * 3.2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(56, 189, 248, ${alpha * 0.1})`;
+            ctx.fill();
+          }
         }
       }
 
@@ -90,4 +117,3 @@ export default function StarField() {
     />
   );
 }
-
