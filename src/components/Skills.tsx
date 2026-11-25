@@ -104,13 +104,13 @@ export default function Skills() {
         {SKILL_GROUPS.map((group, idx) => {
           const Icon = group.icon;
           return (
-            <motion.div
-              key={group.title}
-              initial={{ opacity: 0, y: 32, filter: 'blur(8px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: idx * 0.12 }}
-            >
+              <motion.div
+                key={group.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.55, delay: idx * 0.1 }}
+              >
               <TiltCard glowColor={group.glowColor} className="h-full">
                 <div
                   className={`group relative rounded-2xl bg-white/85 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-white/10 ${group.borderHover} p-6 transition-all duration-300 overflow-hidden h-full shadow-[0_8px_30px_rgba(15,23,42,0.05)] dark:shadow-lg animated-border`}

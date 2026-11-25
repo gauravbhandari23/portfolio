@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { motion } from 'framer-motion';
 
 interface SectionWrapperProps {
   children: ReactNode;
@@ -16,13 +15,10 @@ export default function SectionWrapper({ children, id, className = '' }: Section
       {/* Section divider glow line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-2xl h-px bg-gradient-to-r from-transparent via-sky-500/30 dark:via-cyan-400/30 to-transparent" />
 
-      {/* Ambient section orb */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-sky-500/[0.04] dark:bg-cyan-500/[0.03] blur-[100px]"
+      {/* Ambient section radial glow (GPU-friendly, zero blur filter pass) */}
+      <div
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-[radial-gradient(circle,rgba(14,165,233,0.06)_0%,transparent_70%)] dark:bg-[radial-gradient(circle,rgba(6,182,212,0.05)_0%,transparent_70%)]"
+        aria-hidden="true"
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">{children}</div>

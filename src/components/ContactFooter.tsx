@@ -33,22 +33,20 @@ export default function ContactFooter() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 32, filter: 'blur(10px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="relative rounded-3xl bg-gradient-to-br from-white/95 via-slate-50/90 to-sky-50/80 dark:from-slate-900/90 dark:via-slate-900/70 dark:to-slate-950/90 border border-slate-200/90 dark:border-white/10 p-7 sm:p-12 overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.08)] dark:shadow-2xl glow-hover"
         >
-          {/* Ambient Glows */}
-          <motion.div
-            animate={{ opacity: [0.2, 0.35, 0.2], scale: [1, 1.1, 1] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="pointer-events-none absolute -top-28 -right-28 w-80 h-80 rounded-full bg-sky-400/20 dark:bg-cyan-500/20 blur-[120px]"
+          {/* GPU-friendly Radial Ambient Glows */}
+          <div
+            className="pointer-events-none absolute -top-28 -right-28 w-80 h-80 rounded-full bg-[radial-gradient(circle,rgba(14,165,233,0.18)_0%,transparent_70%)] dark:bg-[radial-gradient(circle,rgba(6,182,212,0.2)_0%,transparent_70%)]"
+            aria-hidden="true"
           />
-          <motion.div
-            animate={{ opacity: [0.15, 0.3, 0.15], scale: [1, 1.15, 1] }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-            className="pointer-events-none absolute -bottom-28 -left-28 w-80 h-80 rounded-full bg-violet-400/20 dark:bg-violet-500/20 blur-[120px]"
+          <div
+            className="pointer-events-none absolute -bottom-28 -left-28 w-80 h-80 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.18)_0%,transparent_70%)] dark:bg-[radial-gradient(circle,rgba(139,92,246,0.2)_0%,transparent_70%)]"
+            aria-hidden="true"
           />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">

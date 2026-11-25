@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
@@ -13,102 +13,94 @@ import {
 } from 'lucide-react';
 import { RESUME_DATA } from '../data/resume';
 
+const TYPEWRITER_WORDS = [
+  'React.js Interfaces',
+  'Responsive Web Apps',
+  'Clean UI Components',
+  'Pixel-Perfect Designs',
+];
+
 /* ── Stagger container ── */
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 28, filter: 'blur(8px)' },
+  hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
-/* ── Typewriter Hook ── */
-function useTypewriter(words: string[], speed = 90, pause = 2200) {
-  const [text, setText] = useState('');
+/* ── Isolated Typewriter Pill (prevents Hero re-renders on every character) ── */
+const TypewriterPill = memo(function TypewriterPill() {
+  const [text, setText] = useState(TYPEWRITER_WORDS[0]);
   const [wordIdx, setWordIdx] = useState(0);
-  const [charIdx, setCharIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(TYPEWRITER_WORDS[0].length);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const current = words[wordIdx];
-    const timeout = setTimeout(
-      () => {
-        if (!deleting) {
-          setText(current.slice(0, charIdx + 1));
-          if (charIdx + 1 === current.length) {
-            setTimeout(() => setDeleting(true), pause);
-          } else {
-            setCharIdx((c) => c + 1);
-          }
-        } else {
-          setText(current.slice(0, charIdx));
-          if (charIdx === 0) {
-            setDeleting(false);
-            setWordIdx((w) => (w + 1) % words.length);
-          } else {
-            setCharIdx((c) => c - 1);
-          }
-        }
-      },
-      deleting ? speed / 2 : speed,
-    );
-    return () => clearTimeout(timeout);
-  }, [charIdx, deleting, wordIdx, words, speed, pause]);
+    const current = TYPEWRITER_WORDS[wordIdx];
+    let delay = deleting ? 45 : 85;
+    if (!deleting && charIdx === current.length) {
+      delay = 2000;
+    } else if (deleting && charIdx === 0) {
+      delay = 250;
+    }
 
-  return text;
-}
+    const timer = setTimeout(() => {
+      if (!deleting) {
+        if (charIdx < current.length) {
+          const next = charIdx + 1;
+          setText(current.slice(0, next));
+          setCharIdx(next);
+        } else {
+          setDeleting(true);
+        }
+      } else {
+        if (charIdx > 0) {
+          const next = charIdx - 1;
+          setText(current.slice(0, next));
+          setCharIdx(next);
+        } else {
+          setDeleting(false);
+          setWordIdx((w) => (w + 1) % TYPEWRITER_WORDS.length);
+        }
+      }
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [charIdx, deleting, wordIdx]);
+
+  return (
+    <span className="inline-flex items-center gap-1.5 px-3 py-1 sm:py-0.5 rounded-lg bg-white/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-sky-700 dark:text-cyan-300 shadow-sm dark:shadow-none w-fit max-w-full">
+      <Code2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+      <span className="truncate">{text}</span>
+      <span className="animate-blink text-sky-500 dark:text-cyan-400 font-light shrink-0">|</span>
+    </span>
+  );
+});
 
 export default function Hero() {
-  const typed = useTypewriter([
-    'React.js Interfaces',
-    'Responsive Web Apps',
-    'Clean UI Components',
-    'Pixel-Perfect Designs',
-  ]);
-
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center pt-28 pb-16 sm:pt-32 sm:pb-24 overflow-hidden"
     >
-      {/* ── Animated Ambient Orbs ── */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.25, 0.45, 0.25],
-          x: [0, 40, 0],
-          y: [0, -30, 0],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none absolute -top-32 -left-32 w-[30rem] h-[30rem] rounded-full bg-sky-400/25 dark:bg-cyan-500/30 blur-[140px]"
+      {/* ── GPU-friendly Radial Ambient Orbs (no heavy Gaussian blur filter) ── */}
+      <div
+        className="pointer-events-none absolute -top-40 -left-40 w-[34rem] h-[34rem] rounded-full bg-[radial-gradient(circle,rgba(14,165,233,0.22)_0%,transparent_70%)] dark:bg-[radial-gradient(circle,rgba(6,182,212,0.24)_0%,transparent_70%)]"
+        aria-hidden="true"
       />
-      <motion.div
-        animate={{
-          scale: [1, 1.25, 1],
-          opacity: [0.2, 0.4, 0.2],
-          x: [0, -40, 0],
-          y: [0, 40, 0],
-        }}
-        transition={{ duration: 13, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none absolute top-1/4 -right-32 w-[32rem] h-[32rem] rounded-full bg-violet-400/25 dark:bg-violet-600/25 blur-[150px]"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.1, 0.25, 0.1],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none absolute bottom-0 left-1/3 w-[25rem] h-[25rem] rounded-full bg-sky-300/20 dark:bg-sky-400/15 blur-[120px]"
+      <div
+        className="pointer-events-none absolute top-1/4 -right-40 w-[36rem] h-[36rem] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.2)_0%,transparent_70%)] dark:bg-[radial-gradient(circle,rgba(124,58,237,0.22)_0%,transparent_70%)]"
+        aria-hidden="true"
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full relative z-10">
@@ -145,11 +137,7 @@ export default function Hero() {
               </h1>
               <h2 className="text-base sm:text-2xl lg:text-3xl font-semibold text-slate-700 dark:text-slate-300 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-2.5 sm:flex-wrap">
                 <span>Building modern</span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 sm:py-0.5 rounded-lg bg-white/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-sky-700 dark:text-cyan-300 shadow-sm dark:shadow-none w-fit max-w-full">
-                  <Code2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
-                  <span className="truncate">{typed}</span>
-                  <span className="animate-blink text-sky-500 dark:text-cyan-400 font-light shrink-0">|</span>
-                </span>
+                <TypewriterPill />
               </h2>
             </motion.div>
 

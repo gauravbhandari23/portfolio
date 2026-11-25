@@ -25,10 +25,10 @@ export default function Projects() {
           return (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 36, filter: 'blur(10px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.7, delay: idx * 0.15 }}
+              transition={{ duration: 0.6, delay: idx * 0.12 }}
             >
               <TiltCard
                 glowColor={isCyan ? 'rgba(56, 189, 248, 0.14)' : 'rgba(139, 92, 246, 0.14)'}

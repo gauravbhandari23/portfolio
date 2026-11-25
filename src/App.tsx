@@ -1,13 +1,16 @@
+import { lazy, Suspense } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import EducationCerts from './components/EducationCerts';
-import ContactFooter from './components/ContactFooter';
-import StarField from './components/StarField';
-import MouseGlow from './components/MouseGlow';
+
+// Lazy-load below-the-fold sections and ambient canvas for fast mobile initial paint
+const StarField = lazy(() => import('./components/StarField'));
+const MouseGlow = lazy(() => import('./components/MouseGlow'));
+const Experience = lazy(() => import('./components/Experience'));
+const Skills = lazy(() => import('./components/Skills'));
+const Projects = lazy(() => import('./components/Projects'));
+const EducationCerts = lazy(() => import('./components/EducationCerts'));
+const ContactFooter = lazy(() => import('./components/ContactFooter'));
 
 export default function App() {
   const { scrollYProgress } = useScroll();
@@ -19,11 +22,10 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-slate-50 text-slate-900 dark:bg-[#050816] dark:text-slate-100 bg-grid-pattern overflow-x-clip transition-colors duration-300">
-      {/* Animated Star / Particle Canvas */}
-      <StarField />
-
-      {/* Mouse Cursor Glow (desktop only) */}
-      <MouseGlow />
+      <Suspense fallback={null}>
+        <StarField />
+        <MouseGlow />
+      </Suspense>
 
       {/* Top Scroll Progress Bar */}
       <motion.div
@@ -35,14 +37,18 @@ export default function App() {
 
       <main className="relative z-[2]">
         <Hero />
-        <Experience />
-        <Skills />
-        <Projects />
-        <EducationCerts />
+        <Suspense fallback={<div className="min-h-[40vh]" />}>
+          <Experience />
+          <Skills />
+          <Projects />
+          <EducationCerts />
+        </Suspense>
       </main>
 
       <div className="relative z-[2]">
-        <ContactFooter />
+        <Suspense fallback={null}>
+          <ContactFooter />
+        </Suspense>
       </div>
     </div>
   );

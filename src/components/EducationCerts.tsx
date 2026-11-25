@@ -10,10 +10,10 @@ export default function EducationCerts() {
         {/* ── Education Column ── */}
         <div className="lg:col-span-7 space-y-6">
           <motion.div
-            initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
-            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.55 }}
             className="space-y-2"
           >
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-cyan-400">
@@ -29,10 +29,10 @@ export default function EducationCerts() {
             {RESUME_DATA.education.map((edu, idx) => (
               <motion.div
                 key={edu.institution}
-                initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: idx * 0.12 }}
+                transition={{ duration: 0.55, delay: idx * 0.1 }}
                 whileHover={{ y: -4 }}
                 className="group rounded-2xl bg-white/85 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-white/10 hover:border-sky-400/50 dark:hover:border-cyan-400/35 p-5 sm:p-6 transition-all duration-300 shadow-[0_8px_30px_rgba(15,23,42,0.05)] dark:shadow-lg glow-hover animated-border"
               >
@@ -68,10 +68,10 @@ export default function EducationCerts() {
         {/* ── Certifications Column ── */}
         <div className="lg:col-span-5 space-y-6">
           <motion.div
-            initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
-            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.55 }}
             className="space-y-2"
           >
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-violet-600 dark:text-violet-400">
@@ -90,10 +90,10 @@ export default function EducationCerts() {
                 href={cert.url}
                 target="_blank"
                 rel="noreferrer"
-                initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
-                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: idx * 0.12 }}
+                transition={{ duration: 0.55, delay: idx * 0.1 }}
                 whileHover={{ y: -4, scale: 1.01 }}
                 className="group block rounded-2xl bg-white/85 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/90 dark:border-white/10 hover:border-violet-400/50 dark:hover:border-violet-400/40 p-5 sm:p-6 transition-all duration-300 shadow-[0_8px_30px_rgba(15,23,42,0.05)] dark:shadow-lg glow-hover animated-border"
               >

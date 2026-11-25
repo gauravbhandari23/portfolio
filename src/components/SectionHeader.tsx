@@ -30,10 +30,10 @@ export default function SectionHeader({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32, filter: 'blur(10px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
       className="mb-12 sm:mb-14 space-y-3"
     >
       <div className={`inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest ${labelClass}`}>

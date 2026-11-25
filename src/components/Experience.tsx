@@ -5,12 +5,11 @@ import SectionWrapper from './SectionWrapper';
 import SectionHeader from './SectionHeader';
 
 const cardVariants = {
-  hidden: { opacity: 0, x: -32, filter: 'blur(8px)' },
+  hidden: { opacity: 0, x: -24 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.65, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
