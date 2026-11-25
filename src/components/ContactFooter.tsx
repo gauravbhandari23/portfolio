@@ -27,7 +27,7 @@ export default function ContactFooter() {
   };
 
   return (
-    <footer id="contact" className="pt-16 sm:pt-20 pb-12 relative overflow-x-clip">
+    <footer id="contact" className="pt-16 sm:pt-20 pb-12 scroll-mt-10 sm:scroll-mt-4 relative overflow-x-clip">
       {/* Gradient divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 max-w-2xl h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
 

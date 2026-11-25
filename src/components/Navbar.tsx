@@ -55,6 +55,11 @@ export default function Navbar() {
       scrollSpyLocked.current = false;
     }, 1200);
 
+    if (id === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
